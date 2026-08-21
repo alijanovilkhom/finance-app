@@ -1,14 +1,24 @@
+import { Button } from '@/components/ui/Button'
+import { Input } from '@/components/ui/Input'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
+
 export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-900">
-      <div className="p-8 bg-white rounded-2xl shadow-sm border border-slate-200 text-center max-w-md">
-        <h1 className="text-2xl font-bold tracking-tight text-blue-600 mb-2">
-          Personal Finance Tracker
-        </h1>
-        <p className="text-sm text-slate-500">
-          Проект успешно инициализирован. Все библиотеки установлены и готовы к работе!
-        </p>
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
+      <Card className="max-w-md w-full">
+        <CardHeader>
+          <CardTitle>Тест UI-Kit</CardTitle>
+          <CardDescription>Компоненты Button, Input и Card готовы к работе.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <Input label="Email" placeholder="example@mail.com" />
+          <div className="flex gap-2">
+            <Button variant="primary">Основная</Button>
+            <Button variant="secondary">Вторичная</Button>
+            <Button variant="outline">Контур</Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }
