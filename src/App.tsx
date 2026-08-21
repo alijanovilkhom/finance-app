@@ -1,24 +1,21 @@
-import { Button } from '@/components/ui/Button'
-import { Input } from '@/components/ui/Input'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { MainLayout } from './components/layout/MainLayout'
+import { DashboardPage } from './pages/src/pages/DashboardPage'
+import { TransactionsPage } from './pages/src/pages/TransactionsPage'
+import { AnalyticsPage } from './pages/src/pages/AnalyticsPage'
+import { SettingsPage } from './pages/src/pages/SettingsPage'
 
 export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
-      <Card className="max-w-md w-full">
-        <CardHeader>
-          <CardTitle>Тест UI-Kit</CardTitle>
-          <CardDescription>Компоненты Button, Input и Card готовы к работе.</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Input label="Email" placeholder="example@mail.com" />
-          <div className="flex gap-2">
-            <Button variant="primary">Основная</Button>
-            <Button variant="secondary">Вторичная</Button>
-            <Button variant="outline">Контур</Button>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<DashboardPage />} />
+          <Route path="transactions" element={<TransactionsPage />} />
+          <Route path="analytics" element={<AnalyticsPage />} />
+          <Route path="settings" element={<SettingsPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
