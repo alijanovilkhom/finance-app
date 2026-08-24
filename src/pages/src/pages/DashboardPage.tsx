@@ -1,18 +1,5 @@
-import type { Transaction } from '@/types/finance'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
-
-// Пример использования типа для проверки (VS Code будет давать автодополнение полей)
-const testTransaction: Transaction = {
-  id: '1',
-  userId: 'user-1',
-  accountId: 'acc-1',
-  type: 'expense',
-  category: 'food',
-  amount: 1500,
-  description: 'Покупка продуктов',
-  date: new Date().toISOString(),
-  createdAt: new Date().toISOString(),
-}
+import { mockSummary } from '@/data/mockData'
 
 export const DashboardPage = () => {
   return (
@@ -25,12 +12,38 @@ export const DashboardPage = () => {
         <Card>
           <CardHeader>
             <CardTitle className="text-sm font-medium text-slate-500">
-              Тестовая операция ({testTransaction.category})
+              Общий баланс
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-              {testTransaction.amount} ₽
+              {mockSummary.totalBalance.toLocaleString('ru-RU')} ₽
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-sm font-medium text-slate-500">
+              Доходы за месяц
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-bold text-emerald-600">
+              +{mockSummary.totalIncome.toLocaleString('ru-RU')} ₽
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-sm font-medium text-slate-500">
+              Расходы за месяц
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-bold text-rose-600">
+              -{mockSummary.totalExpenses.toLocaleString('ru-RU')} ₽
             </p>
           </CardContent>
         </Card>
