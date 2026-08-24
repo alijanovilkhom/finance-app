@@ -26,7 +26,7 @@ export const LoginPage = () => {
           password,
         })
         if (signUpError) throw signUpError
-        alert('Регистрация успешна! Проверьте почту для подтверждения или войдите.')
+        navigate('/')
       } else {
         const { error: signInError } = await supabase.auth.signInWithPassword({
           email,
