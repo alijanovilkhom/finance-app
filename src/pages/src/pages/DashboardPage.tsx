@@ -1,4 +1,18 @@
+import type { Transaction } from '@/types/finance'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
+
+// Пример использования типа для проверки (VS Code будет давать автодополнение полей)
+const testTransaction: Transaction = {
+  id: '1',
+  userId: 'user-1',
+  accountId: 'acc-1',
+  type: 'expense',
+  category: 'food',
+  amount: 1500,
+  description: 'Покупка продуктов',
+  date: new Date().toISOString(),
+  createdAt: new Date().toISOString(),
+}
 
 export const DashboardPage = () => {
   return (
@@ -11,38 +25,12 @@ export const DashboardPage = () => {
         <Card>
           <CardHeader>
             <CardTitle className="text-sm font-medium text-slate-500">
-              Общий баланс
+              Тестовая операция ({testTransaction.category})
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-              $12,450.00
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-sm font-medium text-slate-500">
-              Доходы за месяц
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-2xl font-bold text-emerald-600">
-              +$4,200.00
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-sm font-medium text-slate-500">
-              Расходы за месяц
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-2xl font-bold text-rose-600">
-              -$1,850.00
+              {testTransaction.amount} ₽
             </p>
           </CardContent>
         </Card>
